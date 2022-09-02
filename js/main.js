@@ -1,9 +1,11 @@
 let elLIst = document.querySelector('.list')
 let elForm = document.querySelector('.form')
+let elCount = document.querySelector('.count')
 
 fetch('https://6311eab4f5cba498da88465f.mockapi.io/users/list')
 .then(res => res.json())
 .then(data => {
+    elCount.textContent = data.length
     data.map((e,i)=>{
         let newLi = document.createElement('li')
         let newH = document.createElement('h3')
@@ -19,13 +21,13 @@ fetch('https://6311eab4f5cba498da88465f.mockapi.io/users/list')
         if(data.length < 50){
             newLi.style.background = 'green'
         }
-        if(data.length < 70 && data.length > 50 ){
+        if(data.length <= 80 && data.length > 50 ){
             newLi.style.background = 'yellow'
             newLi.style.color = 'black'
             newA.style.color = 'black'
 
         }
-        if(data.length > 90){
+        if(data.length > 80){
             newLi.style.background = 'red'
         }
         newLi.appendChild(newspen)
